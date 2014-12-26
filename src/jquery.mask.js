@@ -203,16 +203,22 @@
                         newValL = newVal.length,
                         maskDif = p.getMCharsBeforeCount(newValL - 1) - p.getMCharsBeforeCount(currValL - 1);
 
-                    p.val(newVal);
+                        p.val(newVal);
 
-                    // change caret but avoid CTRL+A
-                    if (changeCaret && !(keyCode === 65 && e.ctrlKey)) {
-                        // Avoid adjusting caret on backspace or delete
-                        if (!(keyCode === 8 || keyCode === 46)) {
-                            caretPos = p.caretPos(caretPos, currValL, newValL, maskDif);
+                        // change caret but avoid CTRL+A
+                        if (changeCaret && !(keyCode === 65 && e.ctrlKey)) {
+                            // Avoid adjusting caret on backspace or delete
+                            if (!(keyCode === 8 || keyCode === 46)) {
+                                caretPos = p.caretPos(caretPos, currValL, newValL, maskDif);
+                                
+                            }
+                            //there's no need to setSelectionRange(0,0) or any range method on 0,0 - it just fuck the on focus behaviour!
+                            if (caretPos > 0)
+                                p.setCaret(caretPos);                            
                         }
-                        p.setCaret(caretPos);
-                    }
+                    
+
+                   
 
                     return p.callbacks(e);
                 }
