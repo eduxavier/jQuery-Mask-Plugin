@@ -205,14 +205,14 @@
 
                     p.val(newVal);
 
-                    // change caret but avoid CTRL+A
-                    if (changeCaret && !(keyCode === 65 && e.ctrlKey)) {
-                        // Avoid adjusting caret on backspace or delete
-                        if (!(keyCode === 8 || keyCode === 46)) {
-                            caretPos = p.caretPos(caretPos, currValL, newValL, maskDif);
-                        }
-                        p.setCaret(caretPos);
-                    }
+                    //// change caret but avoid CTRL+A
+                    //if (changeCaret && !(keyCode === 65 && e.ctrlKey)) {
+                    //    // Avoid adjusting caret on backspace or delete
+                    //    if (!(keyCode === 8 || keyCode === 46)) {
+                    //        caretPos = p.caretPos(caretPos, currValL, newValL, maskDif);
+                    //    }
+                    //    p.setCaret(caretPos);
+                    //}
 
                     return p.callbacks(e);
                 }
